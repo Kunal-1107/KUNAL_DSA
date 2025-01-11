@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+
+void printdata(int &n, int arr[])
+{
+for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+void Insertion(int &n, int arr[])
+{
+    int x;
+    cout << "At which Index you want to perform insertion: ";
+    cin >> x;
+    if (x > n || x < 0)
+    {
+        cout << "Invalid Index entered" << endl;
+        return;
+    }
+    for (int i = n; i > x; i--)
+    {
+        arr[i] = arr[i - 1];
+    }
+    cout << "Enter the value of this inserted element: ";
+    cin >> arr[x];
+    n++;
+}
+void Deletion(int &n, int arr[])
+{
+    if (n == 0)
+    {
+        cout << "Array is Empty cannot perform deletion!" << endl;
+        return;
+    }
+    int x;
+    cout << "Which element you want to delete from array: ";
+    cin >> x;
+    if (x > n || x < 0)
+    {
+        cout << "Invalid Index entered" << endl;
+        return;
+    }
+    if (x != n)
+    {
+        for (int i = x; i < n - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+    }
+    n--;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter the no. of elements you want in array: ";
+    cin >> n;
+    int arr[n];
+
+    cout << "Enter the value of elements in the array: ";
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int choice;
+    cout << "Enter choice: \n1.Inserion \n2.Deletion \n3.Print array \n4.Return..." << endl;
+    cin >> choice;
+    while (choice != 4)
+    {
+        if (choice == 1)
+        {
+            Insertion(n, arr);
+        }
+        else if (choice == 2)
+        {
+            Deletion(n, arr);
+        }
+        else if (choice == 3)
+        {
+            printdata(n, arr);
+        }
+        cout << "Enter choice: \n1.Inserion \n2.Deletion \n3.Print array \n4.Return..." << endl;
+        cin >> choice;
+    }
+    return 0;
+}
